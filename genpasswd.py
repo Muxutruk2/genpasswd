@@ -13,6 +13,9 @@ types = {
 @click.option("--length",default=15, prompt="Enter the password's length", help="Password's length. It must be > 10")
 @click.option("--type", type=click.Choice(types.keys()), default="aA1", help="a: Lowercase, aA: All letters, aA1: All letters and numbers, aA1%: Every charachter")
 def genpasswd(length, type):
+    if length < 10:
+            click.echo("Password length must be 10 or more")
+
     match type:
         case "a":
             possible = string.ascii_lowercase        
